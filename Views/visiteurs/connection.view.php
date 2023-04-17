@@ -1,6 +1,6 @@
 <h1>Page de connexion</h1>
 
-<form methode="POST" action="validation_login">
+<form method="POST" action="validation_login">
     <div class="mb-3">
         <label for="login" class="form-label">Login</label>
         <input type="text" class="form-control" id="login" name="login">
@@ -12,3 +12,6 @@
 
     <button type="submit" class="btn btn-primary"> Connexion</button>
 </form>
+
+<?php
+echo password_hash("test", PASSWORD_DEFAULT);

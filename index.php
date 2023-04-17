@@ -7,6 +7,7 @@ define("URL", str_replace("index.php","",(isset($_SERVER['HTTPS'])? "https" : "h
 require_once("./Controllers/visiteur/visiteur.controller.php");
 require_once("./Controllers/utilisateurs/utilisateurs.controller.php");
 require_once("./Controllers/MainController.controller.php");
+require_once("./Controllers/Security.php");
 $mainController = new MainController();
 $visiteurController = new VisiteurController();
 $utilisateurController = new UtilisateursController();

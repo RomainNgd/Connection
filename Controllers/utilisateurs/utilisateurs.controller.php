@@ -9,7 +9,7 @@ class UtilisateursController extends MainController
 
     public function __construct()
     {
-        $this->UtilisateurManager=new UtilisateurManager;
+        $this->UtilisateurManager=new UtilisateurManager();
     }
 
        public function validation_login($login, $password): void
@@ -27,7 +27,7 @@ class UtilisateursController extends MainController
     public function validtion_login($login, $password): void
     {
         if($this->UtilisateurManager->isCombinaisonValid($login, $password)){
-            if($this->UtilisteurManager->compteEstActivé($login)){
+            if($this->UtilisateurManager->compteEstActive($login)){
                 Toolbox::ajouterMessageAlerte(
                     "Bon retour parmi nous !",
                     Toolbox::COULEUR_VERTE
