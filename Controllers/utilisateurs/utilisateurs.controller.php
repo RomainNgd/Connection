@@ -52,4 +52,17 @@ class UtilisateursController extends MainController
         }
     }
 
+    public function profil(){
+        $datas = $this->UtilisateurManager->getUtilisateurInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']['role'] = $datas['role'];
+        $data_page = [
+            'page_description' => 'page de profil de utilisateur',
+            'page_title' => 'page de profil',
+            'utilisateur' => $datas,
+            'view' => 'Views/utilisateur/profil.view.php',
+            'template' => 'Views/partials/template.php'
+        ];
+        $this->genererPage($data_page);
+    }
+
 }

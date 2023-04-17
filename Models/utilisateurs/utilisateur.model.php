@@ -26,4 +26,14 @@ class UtilisateurManager extends MainManager {
         $prep->closeCursor();
         return $res['is_active'];
     }
+
+    public function getUtilisateurInformation($login){
+        $req = 'SELECT * FROM user WHERE login = :login';
+        $prep = $this->getBdd()->prepare($req);
+        $prep->bindValue(':login', $login, PDO::PARAM_STR);
+        $prep->execute();
+        $res = $prep->fetch(PDO::FETCH_ASSOC);
+        $prep->closeCursor();
+        return $res;
+    }
 }
