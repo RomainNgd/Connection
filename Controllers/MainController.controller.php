@@ -6,7 +6,6 @@ class MainController{
     private $mainManager;
 
     public function __construct(){
-        $this->mainManager = new MainManager();
     }
 
     protected function genererPage($data){

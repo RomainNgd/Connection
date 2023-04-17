@@ -1,5 +1,6 @@
 <?php
 require_once ('./Controllers/MainController.controller.php');
+require_once ('./Models/visiteur/visiteur.model.php');
 
 class VisiteurController extends MainController{
 
@@ -8,18 +9,17 @@ class VisiteurController extends MainController{
 
         public function __construct()
         {
-            parent::__construct();
             $this->visiteurManager = new VisiteurManager;
         }
 
-    public function getUser(){
-            $users = $this->visiteurManager->getUtilisateurs();
+    public function accueil(){
+        $utilisateurs = $this->visiteurManager->getUtilisateurs();
 
             $data_page = [
                 'page_description' => 'page d\'accueil des visiteur',
                 'page_title' => 'page de test',
-                'utilisateurs'=> $users,
-                'view'=> 'Views/Visiteurs/accueil.php',
+                'utilisateurs'=> $utilisateurs,
+                'view'=> 'Views/accueil.view.php',
                 'template' => 'Views/partials/template.php'
             ];
             $this->genererPage($data_page);
