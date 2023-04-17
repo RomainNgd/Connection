@@ -38,7 +38,7 @@ try {
                     header('Location:'.URL."login");
                 }
                 break;
-            case "CreerCompte" : $visiteurController->creerCompte();
+            case "creerCompte" : $visiteurController->creerCompte();
                 break;
             case "validation_creerCompte": echo "test";
                 break;
