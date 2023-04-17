@@ -1,7 +1,7 @@
 <?php
 require_once("Model.class.php");
 
-class MainManager extends Model{
+Abstract class MainManager extends Model{
 
     public function getDatas(){
         $req = $this->getBdd()->prepare("SELECT * FROM matable");
