@@ -19,6 +19,9 @@
     <li class="nav-item">
       <a class="nav-link" aria-current="page" href="<?= URL; ?>compte/profil">Profil</a>
     </li>
+      <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="<?= URL; ?>compte/deconnexion">se Déconnecter</a>
+      </li>
     <?php endif; ?>
     <li class="nav-item">
       <a class="nav-link" href="<?= URL; ?>page1">Page1</a>
