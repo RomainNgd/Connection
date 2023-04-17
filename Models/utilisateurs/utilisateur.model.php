@@ -39,11 +39,11 @@ class UtilisateurManager extends MainManager {
 
     public function verifLoginDisonible($login): bool
     {
-        $utilisateur = $this->getUserInformation($login);
+        $utilisateur = $this->getUtilisateurInformation($login);
         return empty($utilisateur);
     }
     public function bdCreerCompte($login, $passwordCrypte, $mail, $clef): bool{
-        $req = "INSERT INTO utilisateur (login, password, mail, est_valid, role, clef, image) VALUES (:login, :password, :mail, 0, 'user', :clef, '')";
+        $req = "INSERT INTO user (login, password, mail, is_valid, role, clef, image) VALUES (:login, :password, :mail, 0, 'user', :clef, '')";
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(":login", $login, PDO::PARAM_STR);
         $stmt->bindValue(':password', $passwordCrypte, PDO::PARAM_STR);

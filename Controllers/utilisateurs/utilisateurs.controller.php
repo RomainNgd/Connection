@@ -66,10 +66,10 @@ class UtilisateursController extends MainController
     }
 
     public function validation_creationCompte($login, $password, $mail):void{
-        if ($this->UtilisateurManager->verifyLoginDisponible($login)){
+        if ($this->UtilisateurManager->verifLoginDisonible($login)){
             $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
             $clef = random_int(8, 9999);
-            if ($this->UtilisateurManager->bdCreerCompte($login, $passwordCrypte, $clef)){
+            if ($this->UtilisateurManager->bdCreerCompte($login, $passwordCrypte,$mail, $clef)){
                 Toolbox::ajouterMessageAlerte('Lec compte a été créer, vérifié votre email', Toolbox::COULEUR_VERTE);
                 header("Location".URL."creerCompte");
             } else{
