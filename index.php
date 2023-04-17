@@ -25,26 +25,33 @@ try {
             break;
         case "login": $visiteurController->login();
             break;
-        case "validation_login" :
-            if (!empty($_POST['login']) and !empty($_POST['password'])){
-                $login = Security::secureHTML($_POST['login']);
-                $password = Security::secureHTML($_POST['password']);
-                $utilisateurController->validation_login($login, $password);
-            } else {
-                Toolbox::ajouterMessageAlerte(
-                    'Erreur de connexion veuillez réessayer',
-                Toolbox::COULEUR_ROUGE);
-                header('Location: '.URL .'login');
-            }
-            break;
-        case "compte" :
-            switch($url[1]){
-                case "profil": $visiteurController->accueil();
-                    break;
-            }
-            break;
-        default : throw new RuntimeException("La page n'existe pas");
-    }
+            case "validation_login" :
+                if(empty($_POST['login'])&& !empty($_POST['password'])){
+                    $login = Security::secureHTML($_POST['login']);
+                    $password = Security::secureHTML($_POST['password']);
+                    $utilisateurController->validation_login($login, $password);
+                }else{
+                    Toolbox::ajouterMessageAlerte(
+                        "Login ou mot de passe non reseigné",
+                        Toolbox::COULEUR_ROUGE
+                    );
+                    header('Location:'.URL."login");
+                }
+                break;
+            
+            case "compte" :
+                switch($url[1]){
+                    case "profil" :
+                        $utilisateurController->profil();
+                        break;
+                        default : throw new RuntimeException("La page n'existe pas");
+                };
+                break;
+                default : throw new RuntimeException("La page n'existe pas");
+        
+    };
+
 } catch (Exception $e){
     $mainController->pageErreur($e->getMessage());
+
 }
