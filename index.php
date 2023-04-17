@@ -5,7 +5,11 @@ define("URL", str_replace("index.php","",(isset($_SERVER['HTTPS'])? "https" : "h
     "://".$_SERVER['HTTP_HOST'].$_SERVER["PHP_SELF"]));
 
 require_once("./Controllers/visiteur/visiteur.controller.php");
+require_once("./Controllers/utilisateurs/utilisateurs.controller.php");
+require_once("./Controllers/MainController.controller.php");
+$mainController = new MainController();
 $visiteurController = new VisiteurController();
+$utilisateurController = new UtilisateursController();
 
 try {
     if(empty($_GET['page'])){
@@ -20,7 +24,17 @@ try {
             break;
         case "login": $visiteurController->login();
             break;
-        case "validation_login" : echo $_POST['login'] . '-' . $_POST['password'];
+        case "validation_login" :
+            if (!empty($_POST['login']) and !empty($_POST['password'])){
+                $login = Security::secureHTML($_POST['login']);
+                $password = Security::secureHTML($_POST['password']);
+                $utilisateurController->validation_login($login, $password);
+            } else {
+                Toolbox::ajouterMessageAlerte(
+                    'Erreur de connexion veuillez réessayer',
+                Toolbox::COULEUR_ROUGE);
+                header('Location: '.URL .'login');
+            }
             break;
         case "compte" :
             switch($url[1]){
