@@ -9,8 +9,20 @@
           <a class="nav-link" aria-current="page" href="<?= URL; ?>accueil">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="<?= URL; ?>login">Connexion</a>
-        </li>
+    <a class="nav-link" aria-current="page" href="<?= URL; ?>accueil">Accueil</a>
+  </li>
+  <?php if(empty($_SESSION['profil'])) : ?>
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="<?= URL; ?>login">Se connecter</a>
+    </li>
+    <?php else : ?>
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="<?= URL; ?>compte/profil">Profil</a>
+    </li>
+    <?php endif; ?>
+    <li class="nav-item">
+      <a class="nav-link" href="<?= URL; ?>page1">Page1</a>
+    </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Liste déroulante
@@ -23,19 +35,4 @@
       </ul>
     </div>
   </div>
-  <li class="nav-item">
-    <a class="nav-link" aria-current="page" href="<?= URL; ?>accueil">Profil</a>
-  </li>
-  <?php if(empty($_SESSION['profil'])) : ?>
-    <li class="nav-item">
-      <a class="nav-link" aria-current="page" href="<?= URL; ?>login">Se connecter</a>
-    </li>
-    <?php else : ?>
-    <li class="nav-item">
-      <a class="nav-link" aria-current="page" href="<?= URL; ?>compte/profil">Profil</a>
-    </li>
-    <?php endif; ?>
-    <li class="nav-item">
-      <a class="nav-link" href="<?= URL; ?>page1">Se connecter</a>
-    </li>
 </nav>

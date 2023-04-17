@@ -26,7 +26,7 @@ try {
         case "login": $visiteurController->login();
             break;
             case "validation_login" :
-                if(empty($_POST['login'])&& !empty($_POST['password'])){
+                if(!empty($_POST['login'])&& !empty($_POST['password'])){
                     $login = Security::secureHTML($_POST['login']);
                     $password = Security::secureHTML($_POST['password']);
                     $utilisateurController->validation_login($login, $password);
@@ -48,7 +48,7 @@ try {
                 };
                 break;
                 default : throw new RuntimeException("La page n'existe pas");
-        
+
     };
 
 } catch (Exception $e){

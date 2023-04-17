@@ -12,19 +12,13 @@ class UtilisateursController extends MainController
         $this->UtilisateurManager=new UtilisateurManager();
     }
 
-       public function validation_login($login, $password): void
-
-    {
-        echo "test";
-    }
-
     public function pageErreur($msg): void
 
     {
         parent::pageErreur($msg);
     }
 
-    public function validtion_login($login, $password): void
+    public function validation_login($login, $password): void
     {
         if($this->UtilisateurManager->isCombinaisonValid($login, $password)){
             if($this->UtilisateurManager->compteEstActive($login)){

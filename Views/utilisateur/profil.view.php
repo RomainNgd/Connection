@@ -1,14 +1,14 @@
 
-<h3>Profil de l'utilisateur <?php $utilisateur['login'] ?></h3>
+<h3>Profil de l'utilisateur <?= $utilisateur['login'] ?></h3>
 <div id="mail">
-        mail : <?php $utilisateur['mail'] ?>
+        mail : <?= $utilisateur['mail'] ?>
  </div>
  <div id="active">
      active : <?php if ($utilisateur['is_active']):?> activé <? else:?> non actif <?php endif;?>
  </div>
  <div id="role">
-     mail : <?php $utilisateur['role'] ?>
+     mail : <?= $utilisateur['role'] ?>
  </div>
 <div id="image">
-    mail : <?php $utilisateur['image'] ?>
+    mail : <?= $utilisateur['image'] ?>
 </div>
