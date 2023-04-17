@@ -18,6 +18,10 @@ try {
     switch($page){
         case "accueil" : $visiteurController->accueil();
             break;
+        case "login": $visiteurController->login();
+            break;
+        case "validation_login" : echo $_POST['login'] . '-' . $_POST['password'];
+            break;
         case "compte" :
             switch($url[1]){
                 case "profil": $visiteurController->accueil();
