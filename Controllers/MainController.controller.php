@@ -9,7 +9,7 @@ class MainController{
         $this->mainManager = new MainManager();
     }
 
-    private function genererPage($data){
+    protected function genererPage($data){
         extract($data);
         ob_start();
         require_once($view);
