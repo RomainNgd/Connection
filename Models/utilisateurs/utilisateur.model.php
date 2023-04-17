@@ -36,4 +36,10 @@ class UtilisateurManager extends MainManager {
         $prep->closeCursor();
         return $res;
     }
+
+    public function verifLoginDisonible($login): bool
+    {
+        $utilisateur = $this->getUserInformation($login);
+        return empty($utilisateur);
+    }
 }
