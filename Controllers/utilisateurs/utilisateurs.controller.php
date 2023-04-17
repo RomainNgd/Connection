@@ -29,7 +29,7 @@ class UtilisateursController extends MainController
                 $_SESSION['profil'] = [
                     'login' => $login
                 ];
-                header('Location :' .URL."compte/profil");
+                header('Location:' .URL."compte/profil");
             } else {
                 Toolbox::ajouterMessageAlerte (
                     "Le compte n'a pas été activé par mail !",
