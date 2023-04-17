@@ -36,4 +36,13 @@ class VisiteurController extends MainController{
              $this->genererPage($data_page);
          }
 
+         public function creerCompte(){
+             $data_page = [
+                 'page_description' => 'page de création de compte utilisateur',
+                 'page_title' => 'creer un compte',
+                 'view' => 'Views/visiteurs/creerCompte.view.php',
+                 'template' => 'Views/partials/template.php'
+             ];
+             $this->genererPage($data_page);
+         }
 }
