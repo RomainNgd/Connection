@@ -48,8 +48,6 @@ try {
                     case "profil" :
                         $utilisateurController->profil();
                         break;
-                        default : throw new RuntimeException("La page n'existe pas");
-                        break;
                     case "deconnexion" : $utilisateurController->deconnexion();
                     break;
                 default : throw new RuntimeException("La page n'existe pas");
