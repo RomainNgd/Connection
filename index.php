@@ -76,12 +76,23 @@ try {
                         $utilisateurController->deconnexion();
                         break;
                     case "validation_modificationMail":
-                        var_dump(Security::secureHTML($_POST['mail']));
                         $utilisateurController->validation_modification(Security::secureHTML($_POST['mail']));
                         break;
                     case "modificationPassword" : $utilisateurController->modificationPassword();
-                    default:
-                        throw new RuntimeException("La page n'existe pas");
+                        break;
+                    case "validation_modificationPassword" :
+                        if(empty($_POST['ancienPassword']) && !empty($_POST['nouveauPassword']) && !empty($_POST['confirmNouveauPassword'])){
+                            $ancienPassword = Security::secureHTML($_POST['ancienPassword']);
+                            $nouveauPassword = Security::secureHTML($_POST['nouveauPassword']);
+                            $confirmationNouveauPassword = Security::secureHTML($_POST['confirmationNouveauPassword']);
+                            $utilisateurController->validation_modificationPassword($ancienPassword,$nouveauPassword,$confirmationNouveauPassword);
+                        }else{
+                            Toolbox::ajouterMessageAlerte("Vous n'avez pas renseigné toutes les informations", Toolbox::COULEUR_ROUGE);
+                            header("Location: ".URL."compte/modificationPassword");
+                        }
+
+                        break;
+                    default : throw new RuntimeException("La page n'existe pas");
                 }
             };
             break;
