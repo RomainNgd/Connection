@@ -113,4 +113,18 @@ class UtilisateursController extends MainController
 
     }
 
-}
+    /*
+        @param $mail
+        @return void
+    */
+
+    public function validation_modification($mail): void
+    {
+        if ($this->UtilisateurManager->bdModificationMailUser($_SESSION['profil']['login'],$mail)){
+            Toolbox::ajouterMessageAlerte("La modification est effectuée", Toolbox::COULEUR_VERTE);
+        } else {
+            Toolbox::ajouterMessageAlerte("Acune modification effectuée", Toolbox::COULEUR_ROUGE);
+        }
+        header("Location : " . URL . 'compte/profil');
+
+    }}
