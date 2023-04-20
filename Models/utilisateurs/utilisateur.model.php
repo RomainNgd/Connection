@@ -101,7 +101,7 @@ public function bdValidationMailCompte($login,$clef): bool
     */
     public function bdSuppressionCompte($login): bool
     {
-        $req="DELETE FROM utilisateur WHERE login = :login";
+        $req="DELETE FROM user WHERE login = :login";
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(':login', $login, PDO::PARAM_STR);
         $stmt->execute();
