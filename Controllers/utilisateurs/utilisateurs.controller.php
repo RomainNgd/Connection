@@ -173,4 +173,25 @@ class UtilisateursController extends MainController
             header("Location:".URL."compte/profil");
         }
     }
+
+    public function validation_modificationImage($file):void{
+        try {
+            $repertoire = "public/assets/image/profils/" . $_SESSION['profil']['login']."/";
+            $nomImage = Toolbox::ajoutImage($file, $repertoire);
+            $ancienneImage = $this->UtilisateurManager->getImageUtilisateur($_SESSION['profil']['login']);
+            if ($ancienneImage !== "profils/profil.png"){
+                unlink("public/assets/images/".$ancienneImage);
+            }
+            $nomImageBD = "profils".$_SESSION['profil']['login']."/".$nomImage;
+            if ($this->UtilisateurManager->bdAjoutImage($_SESSION['profil']['login'], $nomImageBD)){
+                Toolbox::ajouterMessageAlerte('la modification a été effectué', Toolbox::COULEUR_VERTE);
+            } else{
+                Toolbox::ajouterMessageAlerte('la modification image n\'a pas été effectué', Toolbox::COULEUR_ROUGE);
+            }
+        } catch (Exception $exception){
+            Toolbox::ajouterMessageAlerte($exception->getMessage(), Toolbox::COULEUR_ROUGE);
+        }
+
+        header("Location:".URL."compte/profil");
+    }
 }

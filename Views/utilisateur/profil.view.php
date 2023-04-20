@@ -4,7 +4,7 @@
     <div>
         <img src="<?= URL ?>public/<?= $utilisateur['image'] ?>" width="100px" alt="photo profil">
     </div>
-    <form action="" method="POST">
+    <form action="<?=URL ?>compte/validation_modificationImage" method="POST" enctype="multipart/form-data">
         <label for="image">Chnager l'image de profil</label> <br/>
         <input type="file" class="form-controle-file" id="image" name="image" onchange="submit();">
     </form>
