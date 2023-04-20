@@ -90,7 +90,8 @@ try {
                             Toolbox::ajouterMessageAlerte("Vous n'avez pas renseigné toutes les informations", Toolbox::COULEUR_ROUGE);
                             header("Location: ".URL."compte/modificationPassword");
                         }
-
+                        break;
+                    case "suppressionCompte" : $utilisateurController->suppressionCompte();
                         break;
                     default : throw new RuntimeException("La page n'existe pas");
                 }
