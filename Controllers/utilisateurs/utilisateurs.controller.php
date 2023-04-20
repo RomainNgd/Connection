@@ -74,7 +74,7 @@ class UtilisateursController extends MainController
             if ($this->UtilisateurManager->bdCreerCompte($login, $passwordCrypte,$mail, $clef)){
                 $this->sendEmailValidation($login, $mail, $clef);
                 Toolbox::ajouterMessageAlerte('Lec compte a été créer, vérifié votre email', Toolbox::COULEUR_VERTE);
-                header("Location".URL."creerCompte");
+                header("Location:".URL."creerCompte");
             } else{
                 Toolbox::ajouterMessageAlerte("Erreur lors de la creation du compte, recommencez !", Toolbox::COULEUR_ROUGE);
                 header("Location: ".URL."creerCompte");
