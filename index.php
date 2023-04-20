@@ -50,21 +50,24 @@ try {
                     Toolbox::ajouterMessageAlerte("Les 3 informations sont obligatoires !", Toolbox::COULEUR_ROUGE);
                     header("Locaton:".URL."creerCompte");
                 }
-                
-                break;
-            case "compte" :
-                if(!Security::estConnecte()){
-                    Toolbox::ajouterMessageAlerte("Veuillez vous connecter !", Toolbox::COULEUR_ROUGE);
-                    header("Location:".URL."login");
-                }else{
-                                    switch($url[1]){
-                    case "profil" :
-                        $utilisateurController->profil();
-                        break;
-                    case "deconnexion" : $utilisateurController->deconnexion();
                     break;
-                default : throw new RuntimeException("La page n'existe pas");
-                }
+                case "renoyerMailValidation" : $utilisateurController->renvoyerMailValidation($url[1]);
+                    break;
+                case "vaidationMail" : echo "test";         
+                    break;
+                case "compte" :
+                    if(!Security::estConnecte()){
+                        Toolbox::ajouterMessageAlerte("Veuillez vous connecter !", Toolbox::COULEUR_ROUGE);
+                        header("Location:".URL."login");
+                    }else{
+                                        switch($url[1]){
+                        case "profil" :
+                            $utilisateurController->profil();
+                            break;
+                        case "deconnexion" : $utilisateurController->deconnexion();
+                        break;
+                    default : throw new RuntimeException("La page n'existe pas");
+                    }
         };
     };
 
