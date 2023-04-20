@@ -7,10 +7,12 @@ define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" :
 require_once("./Controllers/visiteur/visiteur.controller.php");
 require_once("./Controllers/utilisateurs/utilisateurs.controller.php");
 require_once("./Controllers/MainController.controller.php");
+require_once("./Controllers/administrateur/AdministrateurController.php");
 require_once("./Controllers/Security.php");
 $mainController = new MainController();
 $visiteurController = new VisiteurController();
 $utilisateurController = new UtilisateursController();
+$administrateurController = new AdministrateurController();
 
 try {
     if (empty($_GET['page'])) {
@@ -101,13 +103,11 @@ try {
                             header('Location:'. URL . 'compte/profil');
                         }
                         break;
-                    default : throw new RuntimeException("La page n'existe pas");
-
                     case "administration" :
                         if(!Security::estConnecte()) {
                             Toolbox::ajouterMessageAlerte("Vuillez vous connecter !", Toolbox::COULEUR_ROUGE);
                             header("Location: ".URL."login");
-                        } elseif(!Security::estAdministrateur()){
+                        } elseif(Security::estAdministrateur()){
                             Toolbox::ajouterMessageAlerte("Vous n'avez pas le droit d'être ici", Toolbox::COULEUR_ROUGE);
                             header("Location: ".URL."accueil");
                         } else {

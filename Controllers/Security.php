@@ -8,4 +8,8 @@ class Security{
      public static function estConnecte(){
          return !empty($_SESSION['profil']);
      }
+
+     public function estAdministrateur():bool{
+         return ($_SESSION['profil']['role'] === 'administrateur');
+     }
 }
