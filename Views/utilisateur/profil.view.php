@@ -1,5 +1,14 @@
 
 <h3>Profil de l'utilisateur <?= $utilisateur['login'] ?></h3>
+<div>
+    <div>
+        <img src="<?= URL ?>public/<?= $utilisateur['image'] ?>" width="100px" alt="photo profil">
+    </div>
+    <form action="" method="POST">
+        <label for="image">Chnager l'image de profil</label> <br/>
+        <input type="file" class="form-controle-file" id="image" name="image" onchange="submit();">
+    </form>
+</div>
 <div id="role">
     role : <?= $utilisateur['role'] ?>
 </div>
