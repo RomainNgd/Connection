@@ -35,7 +35,7 @@ class Toolbox {
         mkdir($dir, 0777);
     }
 
-    $extention = strtolower(pathinfo($file['name'],PATHINFO_EXTENSION)).
+    $extention = strtolower(pathinfo($file['name'],PATHINFO_EXTENSION));
     $random = random_int(0,99999);
     $target_file = $dir. $random ."_".$file['name'];
     if(!getimagesize($file["tmp_name"])) {
