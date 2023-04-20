@@ -62,13 +62,14 @@ try {
                         Toolbox::ajouterMessageAlerte("Veuillez vous connecter !", Toolbox::COULEUR_ROUGE);
                         header("Location:".URL."login");
                     }else{
-                                        switch($url[1]){
-                        case "profil" :
-                            $utilisateurController->profil();
+                        switch($url[1]){
+                            case "profil" :$utilisateurController->profil();
                             break;
-                        case "deconnexion" : $utilisateurController->deconnexion();
-                        break;
-                    default : throw new RuntimeException("La page n'existe pas");
+                            case "deconnexion" : $utilisateurController->deconnexion();
+                            break;
+                            case "validation_modificationMail" : $utilisateurController->validation_modificationMail(Security::secureHTML($_POST['mail']));
+                            break;
+                        default : throw new RuntimeException("La page n'existe pas");
                     }
         };
     };

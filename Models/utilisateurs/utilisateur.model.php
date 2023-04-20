@@ -71,4 +71,15 @@ public function bdValidationMailCompte($login,$clef): bool
     $stmt->closeCursor();
     return $estModifier;
 }
+    public function bdModificationMailUser($login, $mail): bool
+    {
+        $req = "UPDATE user set mail = :mail WHERE login = :login";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":login", $login, PDO::PARAM_STR);
+        $stmt->bindValue(':mail', $mail, PDO::PARAM_INT);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount() > 0 );
+        $stmt->closeCursor();
+        return $estModifier;
+    }
 }
