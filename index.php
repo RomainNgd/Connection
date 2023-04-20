@@ -81,7 +81,7 @@ try {
                     case "modificationPassword" : $utilisateurController->modificationPassword();
                         break;
                     case "validation_modificationPassword" :
-                        if(empty($_POST['ancienPassword']) && !empty($_POST['nouveauPassword']) && !empty($_POST['confirmNouveauPassword'])){
+                        if(!empty($_POST['ancienPassword']) && !empty($_POST['nouveauPassword']) && !empty($_POST['confirmationNouveauPassword'])){
                             $ancienPassword = Security::secureHTML($_POST['ancienPassword']);
                             $nouveauPassword = Security::secureHTML($_POST['nouveauPassword']);
                             $confirmationNouveauPassword = Security::secureHTML($_POST['confirmationNouveauPassword']);

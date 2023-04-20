@@ -10,8 +10,8 @@
         <input type="password" class="form-control" id="nouveauPassword" name="nouveauPassword" required>
     </div>
     <div class="mb-3">
-        <label for="confirmNouveauPassword" class="form-label">Confirmation Nouveau PassWord :</label>
-        <input type="password" class="form-control" id="confirmNouveauPassword" name="confirmNouveauPassword" required>
+        <label for="confirmationNouveauPassword" class="form-label">Confirmation Nouveau PassWord :</label>
+        <input type="password" class="form-control" id="confirmationNouveauPassword" name="confirmationNouveauPassword" required>
     </div>
     <div id="erreur" class="alert alert-danger d-none">
         Les password ne corresponde pas
