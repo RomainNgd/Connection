@@ -108,6 +108,5 @@ public function bdValidationMailCompte($login,$clef): bool
         $estModifier = ($stmt->rowCount() > 0 );
         $stmt->closeCursor();
         return $estModifier;
-
     }
 }
