@@ -31,8 +31,10 @@ class UtilisateursController extends MainController
                 ];
                 header('Location:' .URL."compte/profil");
             } else {
+                $msg = "Le compte".$login ."n'a pas été activé par mail !";
+                $msg .= '<a href="renvoyerMailValidation/'.$login.'">Renvoyer le mail de validation<a/>';
                 Toolbox::ajouterMessageAlerte (
-                    "Le compte n'a pas été activé par mail !",
+                    $msg,
                     Toolbox::COULEUR_ROUGE
                 );
                 header('location'.URL."login");
@@ -70,6 +72,7 @@ class UtilisateursController extends MainController
             $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
             $clef = random_int(8, 9999);
             if ($this->UtilisateurManager->bdCreerCompte($login, $passwordCrypte,$mail, $clef)){
+                $this->sendEmailValidation($login, $mail, $clef);
                 Toolbox::ajouterMessageAlerte('Lec compte a été créer, vérifié votre email', Toolbox::COULEUR_VERTE);
                 header("Location".URL."creerCompte");
             } else{
@@ -80,6 +83,19 @@ class UtilisateursController extends MainController
             Toolbox::ajouterMessageAlerte("le login est utilisé !", Toolbox::COULEUR_ROUGE);
             header("Location: ".URL."creerCompte");
         }
+    }
+
+    public function sendEmailValidation($login, $email, $clef){
+        $urlVerification = URL . 'validationCompte/' . $login . '/' .$clef;
+        $sujet = 'email de validation de compte';
+        $message = 'pour valider votre mcompte veuillez cliquer sur le lien suivant' . $urlVerification;
+        Toolbox::sendMail($sujet, $email, $message);
+    }
+
+    public function renvoyerMailValidation($login): void{
+        $utilisateur = $this->UtilisateurManager->getUtilisateurInformation($login);
+        $this->sendEmailValidation($login, $utilisateur['mail'], $utilisateur['clef']);
+        header('Location: '.URL.'login');
     }
 
 }
