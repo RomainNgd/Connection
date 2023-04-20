@@ -55,6 +55,7 @@ class UtilisateursController extends MainController
             'page_description' => 'page de profil de utilisateur',
             'page_title' => 'page de profil',
             'utilisateur' => $datas,
+            'page_javascript' => ['profils.js'],
             'view' => 'Views/utilisateur/profil.view.php',
             'template' => 'Views/partials/template.php'
         ];
