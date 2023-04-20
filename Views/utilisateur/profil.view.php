@@ -19,3 +19,7 @@
         <button type="submit" class="btn btn-success" id="btnValidModifMail"> Valider</button>
     </form>
 </div>
+
+<div>
+    <a href="<?= URL ?>compte/modificationPassword" class="btn btn-warning">Changer le mot de passe</a>
+</div>
