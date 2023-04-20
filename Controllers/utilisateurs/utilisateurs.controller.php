@@ -162,4 +162,14 @@ class UtilisateursController extends MainController
             header('Location:'.URL . 'compte/modificationPassword');
         }
     }
+
+    public function suppressionCompte():void{
+        if ($this->UtilisateurManager->bdSuppressioncompte($_SESSION['profil']['login'])){
+            Toolbox::ajouterMessageAlerte("la suppression du compte a été effectué", Toolbox::COULEUR_VERTE);
+            $this->deconnexion();
+        } else {
+            Toolbox::ajouterMessageAlerte('La suppression n\'a pas été effctué', Toolbox::COULEUR_ROUGE);
+            header("Location:".URL."compte/profil");
+        }
+    }
 }
