@@ -102,7 +102,25 @@ try {
                         }
                         break;
                     default : throw new RuntimeException("La page n'existe pas");
+
+                    case "administration" :
+                        if(!Security::estConnecte()) {
+                            Toolbox::ajouterMessageAlerte("Vuillez vous connecter !", Toolbox::COULEUR_ROUGE);
+                            header("Location: ".URL."login");
+                        } elseif(!Security::estAdministrateur()){
+                            Toolbox::ajouterMessageAlerte("Vous n'avez pas le droit d'être ici", Toolbox::COULEUR_ROUGE);
+                            header("Location: ".URL."accueil");
+                        } else {
+                            switch($url[1]){
+                                case "droits" : $administrateurController->droits();
+                                break;
+                                default : throw new Exception("La page n'existe pas");
+                            }
+                        }
+                        break;
+                        default : throw new Exception("La page n'existe pas");
                 }
+
             };
             break;
     };
