@@ -82,14 +82,15 @@ class UtilisateursController extends MainController
         header('Location: '.URL.'accueil');
     }
 
-    public function validation_creationCompte($login, $password, $mail):void{
+    public function validation_creationCompte($login, $password, $mail):void
+    {
         if ($this->UtilisateurManager->verifLoginDisonible($login)){
             $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
             $clef = random_int(8, 9999);
-            if ($this->UtilisateurManager->bdCreerCompte($login, $passwordCrypte,$mail, $clef)){
+            if ($this->UtilisateurManager->bdCreerCompte($login, $passwordCrypte,$mail, $clef, "assets/images/profils/profil.png")){
                 $this->sendEmailValidation($login, $mail, $clef);
                 Toolbox::ajouterMessageAlerte('Lec compte a été créer, vérifié votre email', Toolbox::COULEUR_VERTE);
-                header("Location:".URL."creerCompte");
+                header("Location:".URL."login");
             } else{
                 Toolbox::ajouterMessageAlerte("Erreur lors de la creation du compte, recommencez !", Toolbox::COULEUR_ROUGE);
                 header("Location: ".URL."creerCompte");
