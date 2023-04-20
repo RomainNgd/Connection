@@ -141,4 +141,25 @@ class UtilisateursController extends MainController
         }
         header("Location:" . URL . 'compte/profil');
 
-    }}
+    }
+
+    public function validation_modificationPassword($ancienPassword, $nouveauPassword, $confirmationNouveauPassword){
+        if ($nouveauPassword === $confirmationNouveauPassword){
+            if ($this->UtilisateurManager->isCombinaisonValid($_SESSION['profil']['login'], $ancienPassword)){
+                $passwordCrypte = password_hash($nouveauPassword, PASSWORD_DEFAULT);
+                if ($this->UtilisateurManager->bdModificationPassword($_SESSION['profil']['login'], $passwordCrypte)){
+                    Toolbox::ajouterMessageAlerte('la modification du mot de passe a été effctué', Toolbox::COULEUR_VERTE);
+                    header('Location:'.URL."compte/profil");
+                } else {
+                    Toolbox::ajouterMessageAlerte("la modification a échoué", Toolbox::COULEUR_ROUGE);
+                    header('Location:'.URL . 'compte/modificationPassword');
+                }
+            } else {
+                Toolbox::ajouterMessageAlerte("L'ancien mot de passe est incorrecte", Toolbox::COULEUR_ROUGE);
+            }
+        } else {
+            Toolbox::ajouterMessageAlerte("Les password ne correspondent pas", Toolbox::COULEUR_ROUGE);
+            header('Location:'.URL . 'compte/modificationPassword');
+        }
+    }
+}
