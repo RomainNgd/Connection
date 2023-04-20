@@ -87,7 +87,7 @@ class UtilisateursController extends MainController
         if ($this->UtilisateurManager->verifLoginDisonible($login)){
             $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
             $clef = random_int(8, 9999);
-            if ($this->UtilisateurManager->bdCreerCompte($login, $passwordCrypte,$mail, $clef, "assets/images/profils/profil.png")){
+            if ($this->UtilisateurManager->bdCreerCompte($login, $passwordCrypte,$mail, $clef, "assets/images/profils/profil.png", "user")){
                 $this->sendEmailValidation($login, $mail, $clef);
                 Toolbox::ajouterMessageAlerte('Lec compte a été créer, vérifié votre email', Toolbox::COULEUR_VERTE);
                 header("Location:".URL."login");

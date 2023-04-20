@@ -39,7 +39,7 @@ class Toolbox {
     $random = random_int(0,99999);
     $target_file = $dir. $random ."_".$file['name'];
     if(!getimagesize($file["tmp_name"])) {
-        throw new RuntimeException("L'extension du fichier n'est pas reconnu");
+        throw new RuntimeException("L'extension du fichier n'est pas reconnu" );
     }
     if($extention !== "jpg" && $extention !== "jpeg" && $extention !== "png" && $extention !== "gif") {
         throw new RuntimeException("L'extension du fichier n'est pas reconnu");

@@ -42,7 +42,7 @@ class UtilisateurManager extends MainManager {
         $utilisateur = $this->getUtilisateurInformation($login);
         return empty($utilisateur);
     }
-    public function bdCreerCompte($login, $passwordCrypte, $mail, $clef, $image): bool{
+    public function bdCreerCompte($login, $passwordCrypte, $mail, $clef, $image, $role): bool{
         $req = "INSERT INTO user (login, password, mail, is_valid, role, clef, image) VALUES (:login, :password, :mail, 0, 'user', :clef, :image)";
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(":login", $login, PDO::PARAM_STR);
@@ -50,6 +50,7 @@ class UtilisateurManager extends MainManager {
         $stmt->bindValue(':mail', $mail, PDO::PARAM_STR);
         $stmt->bindValue(':clef', $clef, PDO::PARAM_INT);
         $stmt->bindValue(':image', $image, PDO::PARAM_STR);
+        $stmt->bindValue(':role', $role, PDO::PARAM_STR);
         $stmt->execute();
         $estModifier = ($stmt->rowCount() > 0 );
         $stmt->closeCursor();
