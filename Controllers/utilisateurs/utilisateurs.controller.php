@@ -86,7 +86,7 @@ class UtilisateursController extends MainController
     }
 
     public function sendEmailValidation($login, $email, $clef){
-        $urlVerification = URL . 'validationCompte/' . $login . '/' .$clef;
+        $urlVerification = URL . 'validationMail/' . $login . '/' .$clef;
         $sujet = 'email de validation de compte';
         $message = 'pour valider votre mcompte veuillez cliquer sur le lien suivant' . $urlVerification;
         Toolbox::sendMail($sujet, $email, $message);

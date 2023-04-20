@@ -62,7 +62,7 @@ class UtilisateurManager extends MainManager {
 */
 public function bdValidationMailCompte($login,$clef): bool
 {
-    $req = "UPDATE utilisateur set est_valide = 1 WHERE login = :login and clef = :clef";
+    $req = "UPDATE user set is_valid = 1 WHERE login = :login and clef = :clef";
     $stmt = $this->getBdd()->prepare($req);
     $stmt->bindValue(":login", $login, PDO::PARAM_STR);
     $stmt->bindValue(':clef', $clef, PDO::PARAM_INT);
