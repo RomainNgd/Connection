@@ -12,6 +12,3 @@
 
     <button type="submit" class="btn btn-primary"> Connexion</button>
 </form>
-
-<?php
-echo password_hash("test", PASSWORD_DEFAULT);

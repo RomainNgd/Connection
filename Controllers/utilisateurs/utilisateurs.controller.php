@@ -62,6 +62,20 @@ class UtilisateursController extends MainController
         $this->genererPage($data_page);
     }
 
+    public function modificationPassword(){
+        $datas = $this->UtilisateurManager->getUtilisateurInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']['role'] = $datas['role'];
+        $data_page = [
+            'page_description' => 'page de modficication passwordr',
+            'page_title' => 'page de modif pass',
+            'utilisateur' => $datas,
+            'page_javascript' =>['modificationPassword.js'],
+            'view' => 'Views/utilisateur/modificationPassword.view.php',
+            'template' => 'Views/partials/template.php'
+        ];
+        $this->genererPage($data_page);
+    }
+
     public function deconnexion():void{
         Toolbox::ajouterMessageAlerte('la deconnexion a bine été effectué', Toolbox::COULEUR_VERTE);
         unset($_SESSION['profil']);

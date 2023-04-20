@@ -79,6 +79,7 @@ try {
                         var_dump(Security::secureHTML($_POST['mail']));
                         $utilisateurController->validation_modification(Security::secureHTML($_POST['mail']));
                         break;
+                    case "modification_Password" : $utilisateurController->modificationPassword();
                     default:
                         throw new RuntimeException("La page n'existe pas");
                 }
