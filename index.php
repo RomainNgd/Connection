@@ -67,7 +67,7 @@ try {
                             break;
                             case "deconnexion" : $utilisateurController->deconnexion();
                             break;
-                            case "validation_modificationMail" : $utilisateurController->validation_modificationMail(Security::secureHTML($_POST['mail']));
+                            case "validation_modificationMail" : $utilisateurController->validation_modification(Security::secureHTML($_POST['mail']));
                             break;
                         default : throw new RuntimeException("La page n'existe pas");
                     }
