@@ -1,20 +1,15 @@
 
 <h3>Profil de l'utilisateur <?= $utilisateur['login'] ?></h3>
-<div id="mail">
-        mail : <?= $utilisateur['mail'] ?>
- </div>
- <div id="active">
-     active : <?php if ($utilisateur['is_valid']):?> activé <? else:?> non actif <?php endif;?>
- </div>
- <div id="role">
-     mail : <?= $utilisateur['role'] ?>
- </div>
-<div id="image">
-    mail : <?= $utilisateur['image'] ?>
+<div id="role">
+    role : <?= $utilisateur['role'] ?>
 </div>
-<button type="submit" id="btnModifMail" class="btn btn-primary"> Modifié l'adresse mail</button>
+<div id="mail">
+        <p>mail : <?= $utilisateur['mail'] ?></p>
+    <button type="submit" id="btnModifMail" class="btn btn-primary"> Modifié l'adresse mail</button>
+ </div>
 
-<div id="modification-email" class="d-none">
+
+<div id="modificationMail" class="d-none">
     <form method="POST" action="<?= URL . 'compte/validation_modificationMail' ?>">
         <div class="mb-3">
             <label for="mail" class="form-label">Nouveau mail :</label>
