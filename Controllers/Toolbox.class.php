@@ -41,7 +41,7 @@ class Toolbox {
     if(!getimagesize($file["tmp_name"])) {
         throw new RuntimeException("L'extension du fichier n'est pas reconnu");
     }
-    if($extention !== "jpg" && $extention !== "jpeg" && $extention !== "png" !== "gif") {
+    if($extention !== "jpg" && $extention !== "jpeg" && $extention !== "png" && $extention !== "gif") {
         throw new RuntimeException("L'extension du fichier n'est pas reconnu");
     }
     if(file_exists($target_file)) {
