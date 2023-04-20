@@ -1,6 +1,6 @@
 <h1>Modification du mot de passe <?= $_SESSION['profil']['login']?></h1>
 
-<form method="POST" action="validation_login">
+<form method="POST" action="<?= URL ?>compte/validation_modificationPassword">
     <div class="mb-3">
         <label for="ancienPassword" class="form-label">Ancien Password :</label>
         <input type="text" class="form-control" id="ancienPassword" name="ancienPassword" required>
