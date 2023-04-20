@@ -93,6 +93,14 @@ try {
                         break;
                     case "suppresionCompte" : $utilisateurController->suppressionCompte();
                         break;
+                    case "validation_modificationImage" :
+                        if ($_FILES['image']['size'] > 0){
+                            $utilisateurController->validation_modificationImage($_FILES['image']);
+                        } else{
+                            Toolbox::ajouterMessageAlerte('vous n\'avez pas modifié l\'image', Toolbox::COULEUR_ORANGE);
+                            header('Location:'. URL . 'compte/profil');
+                        }
+                        break;
                     default : throw new RuntimeException("La page n'existe pas");
                 }
             };
