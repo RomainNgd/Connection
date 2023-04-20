@@ -116,6 +116,7 @@ public function bdValidationMailCompte($login,$clef): bool
         $req = "UPDATE user set image = :image WHERE login = :login";
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(":login", $login, PDO::PARAM_STR);
+        $stmt->bindValue(':image', $image, PDO::PARAM_STR);
         $stmt->execute();
         $res = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
@@ -127,7 +128,6 @@ public function bdValidationMailCompte($login,$clef): bool
         $req = "SELECT image FROM user WHERE login = :login";
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(":login", $login, PDO::PARAM_STR);
-        $stmt->bindValue(':image', $image, PDO::PARAM_STR);
         $stmt->execute();
         $estModifier = ($stmt->rowCount() > 0 );
         $stmt->closeCursor();
