@@ -76,6 +76,7 @@ try {
                         $utilisateurController->deconnexion();
                         break;
                     case "validation_modificationMail":
+                        var_dump(Security::secureHTML($_POST['mail']));
                         $utilisateurController->validation_modification(Security::secureHTML($_POST['mail']));
                         break;
                     default:

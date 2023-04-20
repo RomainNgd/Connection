@@ -125,6 +125,6 @@ class UtilisateursController extends MainController
         } else {
             Toolbox::ajouterMessageAlerte("Acune modification effectuée", Toolbox::COULEUR_ROUGE);
         }
-        header("Location : " . URL . 'compte/profil');
+        header("Location:" . URL . 'compte/profil');
 
     }}
