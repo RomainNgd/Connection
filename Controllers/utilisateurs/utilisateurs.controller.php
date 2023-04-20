@@ -98,4 +98,18 @@ class UtilisateursController extends MainController
         header('Location: '.URL.'login');
     }
 
+    public function validationMailCompte($login,$clef){
+        if ($this->UtilisateurManager->bdValidationMailCompte($login, $clef)) {
+            Toolbox::ajouterMessageAlerte("le compte a été activé!", Toolbox::COULEUR_VERTE);
+            $_SESSION['profil'] = [
+                "login" => $login,
+            ];
+            header("Location: " . URL . 'compte/profil');
+        } else {
+            Toolbox::ajouterMessageAlerte("Le compte n'a pas été activé!", Toolbox::COULEUR_ROUGE);
+            header("Location : " . URL . 'creerCompte');
+        }
+
+    }
+
 }

@@ -40,6 +40,8 @@ try {
                 break;
             case "creerCompte" : $visiteurController->creerCompte();
                 break;
+        case 'validationMail': $utilisateurController->validationMailCompte($url[1], $url[2]);
+            break;
             case "validation_creerCompte":
                 if(!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['mail'])){
                     $login = Security::secureHTML($_POST['login']);
